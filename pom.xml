@@ -5,92 +5,75 @@
 	<name>STL Tool</name>
 	<groupId>za.co.davidhorwitz.stl</groupId>
 	<artifactId>stl</artifactId>
-	<version>1-SNAPSHOT</version>
+	<version>12-SNAPSHOT</version>
 	<inceptionYear>2016</inceptionYear>
 
 	<!-- Parent: Sakai SiteStats base -->
+  <parent>
+    <groupId>org.sakaiproject</groupId>
+    <artifactId>master</artifactId>
+    <version>12-SNAPSHOT</version>
+    <relativePath>../master/pom.xml</relativePath>
+  </parent> 
 
 	<!-- Packaging -->
 	<packaging>war</packaging>
 	<!-- Project versions -->
 	<properties>
-		<wicket.version>7.6.0</wicket.version>
-		<spring.version>4.2.7.RELEASE</spring.version>
-		<jetty9.version>9.2.19.v20160908</jetty9.version>
-		<log4j.version>2.6.2</log4j.version>
-		<junit.version>4.12</junit.version>
+		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
 		<wtp.version>none</wtp.version>
 	</properties>
 
 	<!-- Dependencies -->
-	<dependencies>
-		<!-- WICKET DEPENDENCIES -->
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-core</artifactId>
-			<version>${wicket.version}</version>
-		</dependency>
-		<!-- OPTIONAL DEPENDENCY <dependency> <groupId>org.apache.wicket</groupId> 
-			<artifactId>wicket-extensions</artifactId> <version>${wicket.version}</version> 
-			</dependency> -->
+    <dependencies>
+        <dependency>
+            <groupId>org.sakaiproject.entitybroker</groupId>
+            <artifactId>entitybroker-api</artifactId>
+        </dependency>
+        <!-- Sakai RSF dependency -->
+        <dependency>
+            <groupId>org.sakaiproject.rsf</groupId>
+            <artifactId>sakai-rsf-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.rsf</groupId>
+            <artifactId>sakai-rsf-web-evolvers</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.rsf</groupId>
+            <artifactId>sakai-rsf-web-templates</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <!-- Sakai dependencies (all RSF apps must have these) -->
+        <!-- Sakai Kernel dependencies -->
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-kernel-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-kernel-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-component-manager</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+	<dependency>
+           <groupId>org.springframework</groupId>
+	   <artifactId>spring-webmvc</artifactId>
+	</dependency>
+    </dependencies>
 
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
 
-		<!-- JUNIT DEPENDENCY FOR TESTING -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- JETTY DEPENDENCIES FOR TESTING -->
-		<dependency>
-			<groupId>org.eclipse.jetty.aggregate</groupId>
-			<artifactId>jetty-all</artifactId>
-			<version>${jetty9.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-	<!-- Build -->
-	<build>
-		<resources>
-			<resource>
-				<directory>${basedir}/src/main/java</directory>
-				<includes>
-					<include>**/*.html</include>
-					<include>**/*.js</include>
-					<include>**/*.properties</include>
-					<include>**/*.gif</include>
-					<include>**/*.css</include>
-					<include>**/*.xsl</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>${basedir}/src/main/webapp</directory>
-				<includes>
-					<include>**/*.html</include>
-					<include>**/*.js</include>
-					<include>**/*.properties</include>
-					<include>**/*.gif</include>
-					<include>**/*.css</include>
-					<include>**/*.xsl</include>
-				</includes>
-			</resource>
-		</resources>
-	</build>
 
 </project>
