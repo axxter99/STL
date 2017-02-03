@@ -74,6 +74,26 @@
 	</dependency>
     </dependencies>
 
-
+	<build>
+		<resources>
+			<!-- include our HTML but not the Java source -->
+			<resource>
+				<directory>src/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<!-- include our log4j.properties -->
+            <resource>
+                <directory>src/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+		</resources>
+	</build>
 
 </project>

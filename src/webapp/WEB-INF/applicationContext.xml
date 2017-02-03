@@ -10,9 +10,9 @@
 		<property name="cacheSeconds" value="10" />
 	</bean> -->
 	<!-- Control the location of the html templates (default: content/templates/) -->
-	<!-- <bean id="templateResolverStrategy" parent="CRITemplateResolverStrategy">
+	<bean id="templateResolverStrategy" parent="CRITemplateResolverStrategy">
 		<property name="baseDirectory" value="content/" />
-	</bean> -->
+	</bean> 
 	
 
 
