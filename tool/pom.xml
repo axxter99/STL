@@ -9,12 +9,11 @@
 	<inceptionYear>2016</inceptionYear>
 
 	<!-- Parent: Sakai SiteStats base -->
-  <parent>
-    <groupId>org.sakaiproject</groupId>
-    <artifactId>master</artifactId>
-    <version>12-SNAPSHOT</version>
-    <relativePath>../master/pom.xml</relativePath>
-  </parent> 
+	<parent>
+		<artifactId>writeandread</artifactId>
+		<groupId>org.sakaiproject.writeandread</groupId>
+		<version>12-SNAPSHOT</version>
+	</parent>
 
 	<!-- Packaging -->
 	<packaging>war</packaging>
