@@ -1,6 +1,6 @@
 package za.co.davidhorwitz.stl.model;
 
-public class STLUserImpl implements za.co.davidhorwitz.stl.api.STLUser {
+public class STLUserImpl implements za.co.davidhorwitz.stl.api.model.STLUser {
 
 	/**
 	 * The locale used to indicate the default locale

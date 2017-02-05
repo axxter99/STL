@@ -1,4 +1,4 @@
-package za.co.davidhorwitz.stl.api;
+package za.co.davidhorwitz.stl.api.model;
 
 /**
  * @author dhorwitz
