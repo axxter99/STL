@@ -1,14 +1,20 @@
-package za.co.davidhorwitz.stl.imp;
+package za.co.davidhorwitz.stl.impl;
 
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import za.co.davidhorwitz.stl.api.logic.STLLogic;
 import za.co.davidhorwitz.stl.api.model.STLPhoto;
 
 public class SakaiSTLLogic implements STLLogic {
-
+	private static Logger log = LoggerFactory.getLogger(SakaiSTLLogic.class);
+	
+	public void init() {
+		log.info("init()");
+	}
 	@Override
 	public STLPhoto getSTLPhoto() {
 
@@ -16,7 +22,7 @@ public class SakaiSTLLogic implements STLLogic {
 		STLPhoto photo = new STLPhoto();
 		photo.setId(new Long(1));
 		photo.setText("This in a ");
-		// TODO Auto-generated method stub
+		log.debug("photo: " + photo.getId());
 		return photo;
 	}
 
@@ -29,7 +35,7 @@ public class SakaiSTLLogic implements STLLogic {
 		twe.setId(new Long(2));
 		twe.setText("This in a ");
 		l.add(twe);
-		
+		log.debug("photo size: " + l.size());
 		
 		return l;
 	}

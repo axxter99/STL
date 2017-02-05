@@ -12,13 +12,11 @@
 	<bean class="za.co.davidhorwitz.stl.producers.MainViewProducer">
 		<!-- <property name="localeGetter" ref="requestLocaleProxy" /> 
  		<property name="messageLocator" ref="messageLocator"/> -->
- 		<property name="STLLogic" ref="za.co.davidhorwitz.stl.api.STLLogic"/>
+ 		<property name="stlLogic" ref="za.co.davidhorwitz.stl.api.logic.STLLogic"/>
 	</bean>
 
 	<bean class="za.co.davidhorwitz.stl.producers.Setting">
 		<property name="navBarRenderer" ref="navBarRenderer"/>
 	</bean>
-	<!-- Logic -->
-	<bean id="za.co.davidhorwitz.stl.api.STLLogic" class="za.co.davidhorwitz.stl.imp.SakaiSTLLogic">
-	</bean>
+
 </beans>

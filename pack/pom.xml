@@ -8,9 +8,9 @@
 		<version>12-SNAPSHOT</version>
 	</parent>
 
-	<name>sharegame - Components</name>
-	<groupId>org.sakaiproject.sharegame</groupId>
-	<artifactId>sharegame-pack</artifactId>
+	<name>writeandread - Components</name>
+	<groupId>org.sakaiproject.writeandread</groupId>
+	<artifactId>writeandread-pack</artifactId>
 
 	<packaging>sakai-component</packaging>
 

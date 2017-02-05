@@ -5,27 +5,12 @@
 	
 	<!-- Bring in the HBM related beans beans -->
 	
-	<import resource="hibernate-hbms.xml" />
+	 <!-- <import resource="hibernate-hbms.xml" /> -->
 	
 	<!-- Bring in the hibernate related beans -->
-	<import resource="spring-hibernate.xml" />
-	
-	<!-- <bean id="org.sakaiproject.sharegame.logic.CompanyLogic" class="org.sakaiproject.sharegame.logic.dao.CompanyLogicDao"> 
-		</bean> -->
+	<!-- <import resource="spring-hibernate.xml" /> -->
 
-	<bean id="org.sakaiproject.sharegame.logic.ShareGameUser" class="org.sakaiproject.sharegame.impl.ShareGameUserImpl"
-		init-method="init">
-		<!-- <property name="dao" ref="org.sakaiproject.sharegame.logic.dao.ValidationDao"/> -->
-		<property name="dao" ref="org.sakaiproject.sharegame.dao.ValidationLogicDao" />
-		<property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService"/>
-		<property name="developerHelperService" ref="org.sakaiproject.entitybroker.DeveloperHelperService"/>
-		<property name="siteService" ref="org.sakaiproject.site.api.SiteService" />
-		<property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService" />
-	</bean>
-	
-	<bean id="org.sakaiproject.sharegame.logic.CompanyLogic" class="org.sakaiproject.sharegame.logic.dao.CompanyLogicDao" init-method="init">
-		<property name="dao" ref="org.sakaiproject.sharegame.dao.ValidationLogicDao" />
-		<property name="developerHelperService" ref="org.sakaiproject.entitybroker.DeveloperHelperService"/>
-		<property name="shareGameUser"  ref="org.sakaiproject.sharegame.logic.ShareGameUser"/>
+	<!-- Logic -->
+	<bean id="za.co.davidhorwitz.stl.api.logic.STLLogic" class="za.co.davidhorwitz.stl.impl.SakaiSTLLogic" init-method="init">
 	</bean>
 </beans>

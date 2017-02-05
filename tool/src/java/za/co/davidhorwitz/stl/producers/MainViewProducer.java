@@ -29,8 +29,8 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 	}
 	private STLLogic stlLogic;
 	
-	public STLLogic getStlLogic() {
-		return stlLogic;
+	public void setStlLogic(STLLogic stlLogic) {
+		this.stlLogic = stlLogic;
 	}
 
 
@@ -44,7 +44,7 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 		STLPhoto photo = stlLogic.getSTLPhoto();
 		
 		log.info("photo: " + photo.getId() + " " + photo.getText());
-		String photoLing = "../images/" + photo.getId().toString() + ".jpg";
+		String photoLing = "../images/content/" + photo.getId().toString() + ".jpg";
 		UILink.make(tofill, "photo", photoLing);
 		UIOutput.make(tofill, "text", photo.getText());
 		
