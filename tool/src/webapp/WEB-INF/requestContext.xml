@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+     <!--  Renderers -->
+  <bean id="navBarRenderer" class="za.co.davidhorwitz.stl.renderers.NavBarRenderer">
+  	
+  </bean>
+  
+  
+	<bean class="za.co.davidhorwitz.stl.producers.MainViewProducer">
+		<!-- <property name="localeGetter" ref="requestLocaleProxy" /> 
+ 		<property name="messageLocator" ref="messageLocator"/> -->
+ 		<property name="stlLogic" ref="za.co.davidhorwitz.stl.api.logic.STLLogic"/>
+	</bean>
+
+	<bean class="za.co.davidhorwitz.stl.producers.Setting">
+		<property name="navBarRenderer" ref="navBarRenderer"/>
+	</bean>
+
+</beans>

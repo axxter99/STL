@@ -1,6 +1,7 @@
 He is reading the book
-This is a lion
 
+This is a ${text}
+This is a picture of a lion
 
 
 photo: images-> 2017->01->1

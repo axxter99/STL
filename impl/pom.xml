@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>writeandread</artifactId>
+		<groupId>org.sakaiproject.writeandread</groupId>
+		<version>12-SNAPSHOT</version>
+	</parent>
+
+	<name>writeandread - Implementation</name>
+	<groupId>org.sakaiproject.writeandread</groupId>
+	<artifactId>writeandread-impl</artifactId>
+
+	<packaging>jar</packaging>
+
+	<dependencies>
+
+		<!-- project dependencies -->
+		<dependency>
+			<groupId>org.sakaiproject.writeandread</groupId>
+			<artifactId>writeandread-api</artifactId>
+		</dependency>
+
+		<!-- third party dependencies -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+
+		</dependency>
+		<!-- generic DAO -->
+		<dependency>
+			<groupId>org.sakaiproject.genericdao</groupId>
+			<artifactId>generic-dao</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>commons-configuration</groupId> <artifactId>commons-configuration</artifactId> 
+			</dependency> -->
+
+		<!-- Sakai dependencies -->
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-component-manager</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.kernel</groupId>
+			<artifactId>sakai-kernel-util</artifactId>
+		
+		</dependency>
+		<dependency>
+			<groupId>org.sakaiproject.entitybroker
+			</groupId>
+			<artifactId>entitybroker-api</artifactId>
+		</dependency>
+
+	   <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+</project>

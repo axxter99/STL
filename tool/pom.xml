@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>Write and Read - Tool</name>
+	<groupId>za.co.davidhorwitz.stl</groupId>
+	<artifactId>stl</artifactId>
+	<version>12-SNAPSHOT</version>
+	<inceptionYear>2016</inceptionYear>
+
+	<!-- Parent: Sakai SiteStats base -->
+	<parent>
+		<artifactId>writeandread</artifactId>
+		<groupId>org.sakaiproject.writeandread</groupId>
+		<version>12-SNAPSHOT</version>
+	</parent>
+
+	<!-- Packaging -->
+	<packaging>war</packaging>
+	<!-- Project versions -->
+	<properties>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
+		<wtp.version>none</wtp.version>
+	</properties>
+
+	<!-- Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>org.sakaiproject.writeandread</groupId>
+            <artifactId>writeandread-api</artifactId>
+        </dependency>
+        <!-- Sakai RSF dependency -->
+        <dependency>
+            <groupId>org.sakaiproject.rsf</groupId>
+            <artifactId>sakai-rsf-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.rsf</groupId>
+            <artifactId>sakai-rsf-web-evolvers</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.rsf</groupId>
+            <artifactId>sakai-rsf-web-templates</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <!-- Sakai dependencies (all RSF apps must have these) -->
+        <!-- Sakai Kernel dependencies -->
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-kernel-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-kernel-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject.kernel</groupId>
+            <artifactId>sakai-component-manager</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+	<dependency>
+           <groupId>org.springframework</groupId>
+	   <artifactId>spring-webmvc</artifactId>
+	</dependency>
+    </dependencies>
+
+	<build>
+		<resources>
+			<!-- include our HTML but not the Java source -->
+			<resource>
+				<directory>src/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<!-- include our log4j.properties -->
+            <resource>
+                <directory>src/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+		</resources>
+	</build>
+
+</project>
