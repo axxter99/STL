@@ -4,7 +4,8 @@ public class STLPhoto {
 
 	private String text;
 	private Long id;
-	
+	private String aThis;
+	private STLCategories categories;
 
 	/**
 	 * @return
@@ -26,6 +27,30 @@ public class STLPhoto {
 
 	public String getText() {
 		return text;
+	}
+	
+	public String getThis() {
+		return aThis;
+	}
+
+
+	public String getaThis() {
+		return aThis;
+	}
+
+
+	public void setaThis(String aThis) {
+		this.aThis = aThis;
+	}
+
+
+	public STLCategories getCategories() {
+		return categories;
+	}
+
+
+	public void setCategories(STLCategories categories) {
+		this.categories = categories;
 	}
 
 }

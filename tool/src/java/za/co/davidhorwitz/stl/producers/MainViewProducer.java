@@ -17,6 +17,7 @@ import uk.org.ponder.rsf.viewstate.SimpleViewParameters;
 import uk.org.ponder.rsf.viewstate.ViewParameters;
 import za.co.davidhorwitz.stl.api.logic.STLLogic;
 import za.co.davidhorwitz.stl.api.model.STLPhoto;
+import za.co.davidhorwitz.stl.api.model.STLTest;
 
 public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 
@@ -37,16 +38,24 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 	@Override
 	public void fillComponents(UIContainer tofill, ViewParameters viewparams, ComponentChecker checker) {
 	
-		log.info("OK!");
+		log.debug("OK!");
+		STLTest test = stlLogic.getTestAndUser();
+		log.debug("test: " + test.toString());
 		//log.info(UIMessage.make("previous"));
+		log.debug(stlLogic.getUser().toString());
+		
+		
+		
 		UIInternalLink.make(tofill, "Setting", UIMessage.make("admin_settings"), new SimpleViewParameters(Setting.VIEW_ID));
 		
 		STLPhoto photo = stlLogic.getSTLPhoto();
 		
-		log.info("photo: " + photo.getId() + " " + photo.getText());
-		String photoLing = "../images/content/" + photo.getId().toString() + ".jpg";
+		
+		log.debug("photo: " + photo.getId() + " " + photo.getText());
+		String photoLing = stlLogic.getPhotoContent() + photo.getId().toString() + ".jpg";
 		UILink.make(tofill, "photo", photoLing);
-		UIOutput.make(tofill, "text", photo.getText());
+		
+		UIOutput.make(tofill, "text", photo.getText() + " " + getText(photo.getaThis()),  photo.getText());
 		
 		UIMessage.make(tofill, "previous1", "img_previous");
 		UIMessage.make(tofill, "next1", "img_next");
@@ -59,5 +68,17 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 	public String getViewID() {
 		return VIEW_ID;
 	}
-
+	private String getText(String t) {
+		String text = t;
+		int i = text.length();
+		int q = 1;
+		 log.debug("text: " + i);
+		 
+		String c = new String("_");
+		while (i != q) {
+			c = c.concat("_");
+			q++;
+		}
+		return c;
+	}
 }

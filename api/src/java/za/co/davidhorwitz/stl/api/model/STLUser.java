@@ -1,43 +1,93 @@
 package za.co.davidhorwitz.stl.api.model;
 
-/**
- * @author dhorwitz
- *
- */
-public interface STLUser {
+
+
+public class STLUser {
+
 
 	/**
-	 * Access the user's enterprise id; the id they and the enterprise know as belonging to them.<br />
-	 * The Enterprise id, like the User id, is unique among all defined users.<br />
-	 * The EID may be used by the user to login, and will be used when communicating with the user directory provider.
-	 * 
-	 * @return The user's enterprise id.
+	 * The locale used to indicate the default locale
 	 */
-	public String getEid();
+	public static final String DEFAULT_LOCALE = "default";
 	
-	/**
-	 * Access the user's first name.
-	 * 
-	 * @return The user's first name.
-	 */
-	public String getFirstName();
+	private String eid;
+	private String id;
+	private String firstName;
+	private String displayName;
+	private String lastName;
+	private String language;
+	
+	
+	
+	
+	public String getId() {
+		return id;
+	}
 
-	/**
-	 * Access the user's last name.
-	 * 
-	 * @return The user's last name.
-	 */
-	public String getLastName();
 
-	/**
-	 * Access the user's name for display purposes.
-	 * 
-	 * @return The user's name for display purposes.
-	 */
-	public String getDisplayName();
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+	public String getEid() {
+		
+		return eid;
+	}
+
 	
+	public String getFirstName() {
+		
+		return firstName;
+	}
+
 	
-	public String getLanguage();
+	public String getLastName() {
+		return lastName;
+	}
+
 	
+	public String getDisplayName() {
+		// TODO Auto-generated method stub
+		return displayName;
+	}
+
 	
+	public String getLanguage() {
+		
+		return language;
+	}
+
+
+	public void setEid(String eid) {
+		this.eid = eid;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+
+	@Override
+	public String toString() {
+		return "STLUser [eid=" + eid + ", id=" + id + ", firstName=" + firstName + ", displayName=" + displayName
+				+ ", lastName=" + lastName + ", language=" + language + "]";
+	}
+
 }

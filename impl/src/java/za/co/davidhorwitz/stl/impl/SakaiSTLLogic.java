@@ -3,41 +3,130 @@ package za.co.davidhorwitz.stl.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.sakaiproject.entitybroker.DeveloperHelperService;
+import org.sakaiproject.memory.api.Cache;
+import org.sakaiproject.memory.api.MemoryService;
+import org.sakaiproject.user.api.User;
+import org.sakaiproject.user.api.UserDirectoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import za.co.davidhorwitz.stl.api.logic.STLLogic;
+import za.co.davidhorwitz.stl.api.model.STLCategories;
 import za.co.davidhorwitz.stl.api.model.STLPhoto;
+import za.co.davidhorwitz.stl.api.model.STLTest;
+import za.co.davidhorwitz.stl.api.model.STLUser;
 
 public class SakaiSTLLogic implements STLLogic {
 	private static Logger log = LoggerFactory.getLogger(SakaiSTLLogic.class);
 	
+	
+	/**
+	 * Cache for site lookups
+	 */
+	protected Cache<String, STLTest> testCache = null;
+	
+	/** Dependency: MemoryService. */
+	protected MemoryService memoryService = null;
+	
+	/**
+	 * Dependency: MemoryService.
+	 * 
+	 * @param service
+	 *        The MemoryService.
+	 */
+	public void setMemoryService(MemoryService service)
+	{
+		memoryService = service;
+	}
+	private DeveloperHelperService developerHelperService;
+
+	public void setDeveloperHelperService(DeveloperHelperService developerHelperService) {
+		this.developerHelperService = developerHelperService;
+	}
+	
+	private UserDirectoryService userDirectoryService;
+	
+	public void setUserDirectoryService(UserDirectoryService userDirectoryService) {
+		this.userDirectoryService = userDirectoryService;
+	}
 	public void init() {
 		log.info("init()");
+		//Chach
+		testCache = memoryService.getCache("za.co.davidhorwitz.stl.impl.testCache");
 	}
 	@Override
 	public STLPhoto getSTLPhoto() {
 
 		// TODO
-		STLPhoto photo = new STLPhoto();
-		photo.setId(new Long(1));
-		photo.setText("This in a ");
-		log.debug("photo: " + photo.getId());
-		return photo;
+		List<STLPhoto> photo = setPhoto();
+		log.debug("List photo: " + photo.size() );
+		return photo.get(0);
 	}
 
 	@Override
 	public List<STLPhoto> getListSTLPhoto() {
-		List<STLPhoto> l = new ArrayList<>();
-		l.add(getSTLPhoto());
+	
+		
+		return setPhoto();
+	}
+	@Override
+	public String getPhotoContent() {
+		String s = "../images/content/";
+		return s;
+	}
+
+	private List<STLPhoto> setPhoto() {
+		List<STLPhoto> photo = new ArrayList<>();
+		
+		STLCategories categories = new STLCategories();
+		categories.setId(new Long(1));
+		categories.setCategories("Animals");
 		
 		STLPhoto twe = new STLPhoto();
 		twe.setId(new Long(2));
 		twe.setText("This in a ");
-		l.add(twe);
-		log.debug("photo size: " + l.size());
+		twe.setaThis("dog");
+		twe.setCategories(categories);
+		photo.add(twe);
 		
-		return l;
+		
+		STLPhoto photo1 = new STLPhoto();
+		photo1.setId(new Long(1));
+		photo1.setText("This in a ");
+		photo1.setaThis("lion");
+		photo1.setCategories(categories);
+		
+		log.debug("photo size: " + photo.size());
+		
+		return photo;
 	}
-
+	@Override
+	public STLUser getUser() {
+		
+		User u = userDirectoryService.getCurrentUser();
+		STLUser user = new STLUser();
+		user.setId(u.getId());
+		user.setEid(u.getEid());
+		user.setFirstName(u.getFirstName());
+		user.setLastName(u.getLastName());
+		user.setDisplayName(u.getDisplayName());
+		return user;
+	}
+	
+	@Override
+	public STLTest getTestAndUser() {
+		STLUser u = getUser();
+		STLTest t = testCache.get(u.getId());
+		if (t == null) {
+			t = new STLTest();
+			t.setId(new Long(1));
+			t.setUserId(u.getId());
+			t.setPhoto(getListSTLPhoto());
+			t.setPess(t.NEW_PESS);
+			t.setMath(1);
+			testCache.put(t.getUserId(), t);
+		}
+		return t;
+	}
 }
