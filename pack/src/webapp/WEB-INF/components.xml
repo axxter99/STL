@@ -30,4 +30,7 @@
        <property name="overflowToDisk" value="false" />
        <property name="statisticsEnabled" value="true" />
     </bean>
+    
+    <bean id="za.co.davidhorwitz.stl.api.logic.ExternalLogic" class="za.co.davidhorwitz.stl.impl.SakaiExternalLogic">
+    </bean>
 </beans>
