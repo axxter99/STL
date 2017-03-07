@@ -12,8 +12,11 @@
 	<groupId>org.sakaiproject.writeandread</groupId>
 	<artifactId>writeandread-impl</artifactId>
 
-	<packaging>jar</packaging>
-
+	<packaging>sakai-component</packaging>
+    <properties>
+        <deploy.target>components</deploy.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 	<dependencies>
 
 		<!-- project dependencies -->
