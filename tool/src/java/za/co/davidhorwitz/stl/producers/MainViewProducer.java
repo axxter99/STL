@@ -18,6 +18,7 @@ import uk.org.ponder.rsf.viewstate.ViewParameters;
 import za.co.davidhorwitz.stl.api.logic.STLLogic;
 import za.co.davidhorwitz.stl.api.model.STLPhoto;
 import za.co.davidhorwitz.stl.api.model.STLTest;
+import za.co.davidhorwitz.stl.renderers.NavBarRenderer;
 
 public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 
@@ -28,10 +29,15 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 	public void setMessageLocator(MessageLocator messageLocator) {
 		this.messageLocator = messageLocator;
 	}
-	private STLLogic stlLogic;
 	
+	private STLLogic stlLogic;
 	public void setStlLogic(STLLogic stlLogic) {
 		this.stlLogic = stlLogic;
+	}
+	
+	private NavBarRenderer navBarRenderer;
+	public void setNavBarRenderer(NavBarRenderer navBarRenderer) {
+		this.navBarRenderer = navBarRenderer;
 	}
 
 
@@ -44,9 +50,9 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 		//log.info(UIMessage.make("previous"));
 		log.debug(stlLogic.getUser().toString());
 		
+		navBarRenderer.makeNavBar(tofill, "navIntraTool:", VIEW_ID);
 		
-		
-		UIInternalLink.make(tofill, "Setting", UIMessage.make("admin_settings"), new SimpleViewParameters(Setting.VIEW_ID));
+	
 		
 		STLPhoto photo = stlLogic.getSTLPhoto();
 		
@@ -59,6 +65,7 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 		
 		UIMessage.make(tofill, "previous1", "img_previous");
 		UIMessage.make(tofill, "next1", "img_next");
+		UIOutput.make(tofill, "cont", test.getMath() + "/" + test.getPess());
 		
 		
 	}

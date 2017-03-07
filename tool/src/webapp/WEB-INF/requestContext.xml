@@ -13,10 +13,21 @@
 		<!-- <property name="localeGetter" ref="requestLocaleProxy" /> 
  		<property name="messageLocator" ref="messageLocator"/> -->
  		<property name="stlLogic" ref="za.co.davidhorwitz.stl.api.logic.STLLogic"/>
+ 		<property name="navBarRenderer" ref="navBarRenderer"/>
 	</bean>
 
 	<bean class="za.co.davidhorwitz.stl.producers.Setting">
 		<property name="navBarRenderer" ref="navBarRenderer"/>
 	</bean>
 
+<!-- 	<bean id="permissionsProducer"
+		class="za.co.davidhorwitz.stl.producers.producers.PermissionsProducer">
+
+		<property name="messageLocator" ref="messageLocator" />
+		<property name="localeGetter" ref="requestLocaleProxy" />
+		<property name="externalLogic" ref="za.co.davidhorwitz.stl.api.ExternalLogic" />
+		<property name="site" ref="sakai-Site" />
+	</bean>
+	
+-->
 </beans>
