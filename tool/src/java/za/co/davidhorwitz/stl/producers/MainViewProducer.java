@@ -1,19 +1,19 @@
 package za.co.davidhorwitz.stl.producers;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 import uk.org.ponder.messageutil.MessageLocator;
 import uk.org.ponder.rsf.components.UIContainer;
-import uk.org.ponder.rsf.components.UIInternalLink;
 import uk.org.ponder.rsf.components.UILink;
 import uk.org.ponder.rsf.components.UIMessage;
 import uk.org.ponder.rsf.components.UIOutput;
 import uk.org.ponder.rsf.view.ComponentChecker;
 import uk.org.ponder.rsf.view.DefaultView;
 import uk.org.ponder.rsf.view.ViewComponentProducer;
-import uk.org.ponder.rsf.viewstate.SimpleViewParameters;
 import uk.org.ponder.rsf.viewstate.ViewParameters;
 import za.co.davidhorwitz.stl.api.logic.STLLogic;
 import za.co.davidhorwitz.stl.api.model.STLPhoto;
@@ -43,31 +43,46 @@ public class MainViewProducer  implements ViewComponentProducer, DefaultView{
 
 	@Override
 	public void fillComponents(UIContainer tofill, ViewParameters viewparams, ComponentChecker checker) {
-	
+
 		log.debug("OK!");
 		STLTest test = stlLogic.getTestAndUser();
 		log.debug("test: " + test.toString());
-		//log.info(UIMessage.make("previous"));
+		// log.info(UIMessage.make("previous"));
 		log.debug(stlLogic.getUser().toString());
-		
+
 		navBarRenderer.makeNavBar(tofill, "navIntraTool:", VIEW_ID);
-		
-	
-		
-		STLPhoto photo = stlLogic.getSTLPhoto();
-		
-		
-		log.debug("photo: " + photo.getId() + " " + photo.getText());
-		String photoLing = stlLogic.getPhotoContent() + photo.getId().toString() + ".jpg";
+
+		List<STLPhoto> listPhoto = test.getPhoto();
+		STLPhoto photo = null;
+		String photoLing = null;
+		log.debug("mest: " + test.getMath() + "; listPhoto: " + listPhoto.size());
+		for (int q = 0; q < listPhoto.size(); q++) {
+			photo = listPhoto.get(q); // stlLogic.getSTLPhoto(); //
+			log.debug("photo: " + photo.getId() + " " + photo.getText() + " " + photo.getaThis());
+
+			photoLing = stlLogic.getPhotoContent() + photo.getId().toString() + ".jpg";
+			log.debug("Link: " + photoLing);
+			if (listPhoto.size() <= test.getMath()) {
+				break;
+			}
+
+		}
 		UILink.make(tofill, "photo", photoLing);
-		
-		UIOutput.make(tofill, "text", photo.getText() + " " + getText(photo.getaThis()),  photo.getText());
-		
-		UIMessage.make(tofill, "previous1", "img_previous");
+		UIOutput.make(tofill, "text", photo.getText() + " " + getText(photo.getaThis()), photo.getText());
+
+		if (test.getMath() == 2) {
+			UIMessage.make(tofill, "previous1", "img_previous");
+		}
+
 		UIMessage.make(tofill, "next1", "img_next");
+
 		UIOutput.make(tofill, "cont", test.getMath() + "/" + test.getPess());
-		
-		
+
+		// next
+		int next = test.getMath() + 1;
+		log.debug("next: " + next);
+		test.setMath(next);
+
 	}
 
 	

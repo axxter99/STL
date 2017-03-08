@@ -96,6 +96,7 @@ public class SakaiSTLLogic implements STLLogic {
 		photo1.setText("This in a ");
 		photo1.setaThis("lion");
 		photo1.setCategories(categories);
+		photo.add(photo1);
 		
 		log.debug("photo size: " + photo.size());
 		
