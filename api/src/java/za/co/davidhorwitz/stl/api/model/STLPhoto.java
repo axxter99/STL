@@ -6,6 +6,17 @@ public class STLPhoto {
 	private Long id;
 	private String aThis;
 	private STLCategories categories;
+	private boolean heigh;
+
+	public boolean isHeigh() {
+		return heigh;
+	}
+
+
+	public void setHeigh(boolean heigh) {
+		this.heigh = heigh;
+	}
+
 
 	/**
 	 * @return

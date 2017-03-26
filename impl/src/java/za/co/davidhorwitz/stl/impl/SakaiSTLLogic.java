@@ -83,19 +83,42 @@ public class SakaiSTLLogic implements STLLogic {
 		categories.setId(new Long(1));
 		categories.setCategories("Animals");
 		
-		STLPhoto twe = new STLPhoto();
-		twe.setId(new Long(2));
-		twe.setText("This in a ");
-		twe.setaThis("dog");
-		twe.setCategories(categories);
-		photo.add(twe);
+		STLCategories food = new STLCategories();
+		food.setId(new Long(1));
+		food.setCategories("Animals");
 		
 		
+		
+		//Photo
 		STLPhoto photo1 = new STLPhoto();
 		photo1.setId(new Long(1));
 		photo1.setText("This in a ");
 		photo1.setaThis("lion");
 		photo1.setCategories(categories);
+		photo.add(photo1);
+		
+		STLPhoto dog = new STLPhoto();
+		dog.setId(new Long(2));
+		dog.setText("This in a ");
+		dog.setaThis("dog");
+		dog.setCategories(categories);
+		photo.add(dog);
+		
+		STLPhoto photo2 = new STLPhoto();
+		photo2.setId(new Long(3));
+		photo2.setText("This is a picture of of ");
+		photo2.setaThis("giraffe");
+		photo2.setCategories(categories);
+		photo2.setHeigh(true);
+		photo.add(photo2);
+		
+		STLPhoto photo3 = new STLPhoto();
+		photo3.setId(new Long(4));
+		photo3.setText("This is a picture of of ");
+		photo3.setaThis("Milkshake");
+		photo3.setCategories(food);
+		photo3.setHeigh(true);
+		photo.add(photo3);
 		
 		log.debug("photo size: " + photo.size());
 		
@@ -122,8 +145,10 @@ public class SakaiSTLLogic implements STLLogic {
 			t = new STLTest();
 			t.setId(new Long(1));
 			t.setUserId(u.getId());
-			t.setPhoto(getListSTLPhoto());
-			t.setPess(t.NEW_PESS);
+			List<STLPhoto> listPhoto = getListSTLPhoto();
+			t.setPhoto(listPhoto);
+			t.setPess(listPhoto.size());
+			
 			t.setMath(1);
 			testCache.put(t.getUserId(), t);
 		}

@@ -3,5 +3,6 @@
 	<tool id="sakai.stl"
 		title="Write and Read"
 		description="stl created by Sakai App Builder Plugin">
+		<category name="course" />
 	</tool>	
 </registration>
